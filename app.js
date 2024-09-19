@@ -3,21 +3,24 @@ const Statistic = require("./helpers")
 
 const app = express();
 
-app.get("/mean", (req,res) => {
-    const {nums=null} = req.query;
-    console.log(req.query);
-    console.log(nums);
-    return res.send("mean");
+const createResponse = (operation, value) => {
+    const anArr = [];
+    value.split(",").forEach(num => anArr.push(Number(num)));
+    return { response: { operation, "value": Statistic[operation](anArr) } }
+}
+
+app.get("/mean", (req, res) => {
+    return res.json(createResponse("mean", req.query["nums"]))
 })
 
-app.get("/median", (req,res) => {
-    return res.send("median");
+app.get("/median", (req, res) => {
+    return res.json(createResponse("median", req.query["nums"]))
 })
 
-app.get("/mode", (req,res) => {
-    return res.send("mode");
+app.get("/mode", (req, res) => {
+    return res.json(createResponse("mode", req.query["nums"]))
 })
 
-app.listen(3000, function(){
+app.listen(3000, function () {
     console.log("App on port 3000.")
 })
