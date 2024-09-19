@@ -9,18 +9,10 @@ const createResponse = (operation, value) => {
     return { response: { operation, "value": Statistic[operation](anArr) } }
 }
 
-app.get("/mean", (req, res) => {
-    return res.json(createResponse("mean", req.query["nums"]))
-})
+app.get("/mean", (req, res) => res.json(createResponse("mean", req.query["nums"])))
 
-app.get("/median", (req, res) => {
-    return res.json(createResponse("median", req.query["nums"]))
-})
+app.get("/median", (req, res) => res.json(createResponse("median", req.query["nums"])))
 
-app.get("/mode", (req, res) => {
-    return res.json(createResponse("mode", req.query["nums"]))
-})
+app.get("/mode", (req, res) => res.json(createResponse("mode", req.query["nums"])))
 
-app.listen(3000, function () {
-    console.log("App on port 3000.")
-})
+app.listen(3000, () => console.log("App on port 3000."))
