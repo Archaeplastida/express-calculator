@@ -1,4 +1,4 @@
-/*Helper functions for calculator.js*/
+/*Helper functions for app.js*/
 
 class Statistic {
     static mean(numsList) {
