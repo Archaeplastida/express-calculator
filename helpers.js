@@ -26,7 +26,7 @@ class Statistic {
                 if (!x) {
                     if (greatest_val === undefined) greatest_val = v;
                     else if (v > greatest_val) greatest_val = v;
-                } else if (v === greatest_val) listOfModes.push(k);
+                } else if (v === greatest_val) listOfModes.push(Number(k));
             })
         }
         return listOfModes;
